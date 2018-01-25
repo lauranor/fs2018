@@ -16,7 +16,7 @@ const App = () => {
       <Sisalto num={osa1} teht={tehtavia1} />
       <Sisalto num={osa2} teht={tehtavia2} />
       <Sisalto num={osa3} teht={tehtavia3} />
-      <Yhteensa count={tehtavia1 + tehtavia2 + tehtavia3}/>
+      <Yhteensa count={tehtavia1 + tehtavia2 + tehtavia3} />
     </div>
   )
 }
