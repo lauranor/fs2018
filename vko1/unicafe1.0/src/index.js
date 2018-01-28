@@ -8,33 +8,34 @@ class App extends React.Component {
         hyvä: 0,
         neutraali: 0,
         huono: 0,
-        keskiarvo: 0
+        keskiarvo: 0,
+        määrä:0
     }
   }
 
   lisaaHyva = (arvo) => {
     return () => {
       this.setState({ hyvä: arvo })
+      this.setState({ keskiarvo: this.state.keskiarvo + 1})
+      this.setState({ määrä: this.state.määrä + 1 })
     }
   }
   lisaaNeutr = (arvo) => {
     return () => {
       this.setState({ neutraali: arvo })
+      this.setState({ määrä: this.state.määrä + 1 })
     }
   }
   lisaaHuono = (arvo) => {
     return () => {
       this.setState({ huono: arvo })
+      this.setState({ keskiarvo: this.state.keskiarvo -1})
+      this.setState({ määrä: this.state.määrä + 1 })
     }
   }
-
-  laskeKeskiarvo = () => {
-      return () => {
-          this.setState({ keskiarvo: this.state.hyvä })
-      }
-  }
-
+    
   render() {
+      console.log(this.state.keskiarvo);
     return (
       <div>
         <h2>anna palautetta</h2>
@@ -53,6 +54,8 @@ class App extends React.Component {
         <div>hyvä {this.state.hyvä}</div>
         <div>neutraali {this.state.neutraali}</div>
         <div>huono {this.state.huono}</div>
+        <div>keskiarvo {(this.state.keskiarvo / this.state.määrä).toFixed(1)}</div>
+        <div>positiivisia {(this.state.hyvä / this.state.määrä *100).toFixed(1)} %</div>
       </div>
     )
   }
